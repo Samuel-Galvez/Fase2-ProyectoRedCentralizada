@@ -15,6 +15,7 @@ function Show-Menu
      Write-Host "1: Opción '1' Crear UOs."
      Write-Host "2: Opción '2' Crear Grupos."
      Write-Host "3: Opción '3' Crear Usuarios."
+     Write-host "4: Opción '4' Crear Equipos."
      Write-Host "Q: Opción 'Q' Salir."
 }
 function alta_UOs
