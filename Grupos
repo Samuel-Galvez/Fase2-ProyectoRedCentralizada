@@ -1,13 +1,13 @@
-$domain="dc=smr,dc=local"
+$domain="dc=IESElCaminas,dc=mylocal"
 $gruposCsv=Read-Host "Introduce el fichero csv de Grupos:"
-$fichero = import-csv -Path $gruposCsv -delimiter :
-foreach($linea in $fichero)
+$fichero = import-csv -Path $gruposCsv -delimiter *
+foreach($line in $fichero)
 {
 	
-	New-ADGroup -Name:$Name -Description:$Description `
-		-GroupCategory:$Category `
-		-GroupScope:$Scope  `
-		-Path:$Path
+	New-ADGroup -Name:$line.Name -Description:$line.Description `
+		-GroupCategory:$line.Category `
+		-GroupScope:$line.Scope  `
+		-Path:$line.Path
 }
 write-Host ""
 write-Host "Se han creado los grupos en el dominio $domain" -Fore green
