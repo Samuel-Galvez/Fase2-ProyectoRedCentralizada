@@ -1,11 +1,11 @@
-$domain="dc=smr,dc=local"
+$domain="dc=ieselCaminas,dc=mylocal"
 
 $equiposCsv=Read-Host "Introduce el fichero csv de Equipos:"
-$fichero= import-csv -Path $equiposCsv -delimiter ":"
+$fichero= import-csv -Path $equiposCsv -delimiter *
 
 foreach($line in $fichero)
 {
-	New-ADComputer -Enabled:$true -Name:$Computer -Path:$Path -SamAccountName:$Computer
+	New-ADComputer -Enabled:$true -Name:$line.Computer -Path:$line.Path -SamAccountName:$line.Computer
 }
 
 write-Host ""
